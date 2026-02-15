@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hope Hospital | Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0d9488"
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<!-- HEADER -->
+<header class="bg-white shadow sticky top-0 z-50 mb-8">
+  <div class="max-w-7xl mx-auto p-4 flex justify-between items-center">
+
+    <!-- LEFT: LOGO + TITLE -->
+    <div>
+      <h1 class="flex items-center gap-2 text-2xl font-bold text-teal-600">
+        <img
+          src="heart.jpg"
+          alt="Hope Hospital Logo"
+          class="w-7 h-7"
+        />
+        Hope Hospital – Admin Dashboard
+      </h1>
+      <p class="text-gray-600 text-sm">
+        Appointment Status Management | Vuyyuru
+      </p>
+    </div>
+
+    <!-- RIGHT: NAV + LOGOUT -->
+    <div class="flex items-center gap-6 font-medium">
+      <a href="index.html" class="hover:text-teal-600">Home</a>
+      <a href="appointment.html" class="hover:text-teal-600">Appointment</a>
+      <a href="admin.html" class="hover:text-teal-600">Admin</a>
+      
+      <button
+        onclick="logout()"
+        class="text-sm text-red-600 underline ml-4"
+      >
+        Logout
+      </button>
+    </div>
+
+  </div>
+</header>
+<!-- SEARCH CONTROLS -->
+<div class="flex gap-4 mb-4">
+  <input
+    id="searchInput"
+    type="text"
+    placeholder="Search name / phone"
+    class="border p-2 rounded w-64"
+  />
+
+  <select id="statusFilter" class="border p-2 rounded">
+    <option value="">All</option>
+    <option value="pending">Pending</option>
+    <option value="confirmed">Confirmed</option>
+    <option value="completed">Completed</option>
+    <option value="cancelled">Not Available</option>
+  </select>
+
+  <button
+    onclick="searchAppointmentsBelow()"
+    class="bg-teal-600 text-white px-4 rounded">
+    Apply
+  </button>
+</div>
+
+<!-- SEARCH RESULTS (DISPLAY BELOW) -->
+<div id="searchResults" class="mt-6 hidden">
+  <h3 class="text-lg font-bold mb-2">Search Results</h3>
+
+  <table class="w-full border">
+    <thead class="bg-gray-100">
+      <tr>
+        <th class="p-2">Name</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Doctor</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="searchTableBody"></tbody>
+  </table>
+</div>
+
+
+
+<body class="bg-slate-100 min-h-screen p-8">
+  <body class="bg-slate-100 min-h-screen p-8">
+
+<script>
+  if (localStorage.getItem("adminLoggedIn") !== "true") {
+    window.location.href = "admin-login.html";
+  }
+</script>
+
+
+
+
+
+<!-- STAT CARDS -->
+<div class="grid md:grid-cols-5 gap-6 mb-10">
+  <div class="stat">Total<br><span id="totalCount">0</span></div>
+  <div class="stat">Pending 🕒<br><span id="pendingCount">0</span></div>
+  <div class="stat">Confirmed ✅<br><span id="confirmedCount">0</span></div>
+  <div class="stat">Completed 🏁<br><span id="completedCount">0</span></div>
+  <div class="stat">Not Available ❌<br><span id="naCount">0</span></div>
+</div>
+
+<!-- APPOINTMENT TABLE -->
+<div class="bg-white rounded-xl shadow overflow-x-auto">
+  <table class="w-full text-left">
+    <thead class="bg-gray-100 text-gray-700">
+      <tr>
+        <th class="p-4">Patient Name</th>
+        <th>Phone</th>
+        <th>Department</th>
+        <th>Doctor</th>
+        <th>Date</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody id="appointmentTable"></tbody>
+  </table>
+</div>
+
+<!-- TOAST POPUP -->
+<div id="toast"
+  class="hidden fixed bottom-6 right-6 bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg">
+  ✅ Status Updated & SMS Sent
+</div>
+
+
+
+
+<script src="app.js"></script>
+
+
+<!-- SMALL CUSTOM STYLE -->
+<style>
+.stat{
+  background:white;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+  font-weight:600;
+}
+.stat span{
+  font-size:26px;
+  color:#0d9488;
+}
+</style>
+<script>
+  function logout() {
+    localStorage.removeItem("adminLoggedIn");
+    window.location.href = "admin-login.html";
+  }
+</script>
+
+
+</body>
+</html>

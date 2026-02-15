@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Book Appointment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+  <header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto p-4 flex justify-between items-center">
+    <h1 class="flex items-center gap-2 text-2xl font-bold text-teal-600">
+  <img
+    src="heart.jpg"
+    alt="Hope Hospital Logo"
+    class="w-7 h-7"
+  />
+  Hope Hospital
+</h1>
+
+    <nav class="space-x-6 font-medium">
+      <a href="index.html" class="hover:text-teal-600">Home</a>
+      <a href="appointment.html" class="hover:text-teal-600">Appointment</a>
+      <a href="admin.html" class="hover:text-teal-600">Admin</a>
+      <a href="status-check.html" class="hover:text-teal-600">Appointment Status</a>
+    </nav>
+  </div>
+</header>
+
+<div class="max-w-4xl mx-auto mt-16 bg-white p-8 rounded-xl shadow">
+  <h2 class="text-2xl font-bold text-teal-600 mb-6">
+    🩺 Appointment Registration
+  </h2>
+
+  <!-- MESSAGE -->
+  <div id="msg" class="hidden mb-4 p-3 rounded"></div>
+
+  <form id="appointmentForm" class="grid md:grid-cols-2 gap-4">
+
+    <!-- NAME (DB: name NOT NULL) -->
+    <input
+      id="name"
+      class="input"
+      placeholder="Patient Name"
+      required
+    />
+
+    <!-- AGE (DB: age NULL) -->
+    <input
+      id="age"
+      class="input"
+      type="number"
+      min="0"
+      placeholder="Age (optional)"
+    />
+
+    <!-- GENDER (DB: gender NULL) -->
+    <select id="gender" class="input">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+
+    <!-- PHONE (DB: phone NOT NULL) -->
+    <input
+      id="phone"
+      class="input"
+      type="tel"
+      placeholder="Phone Number"
+      required
+    />
+
+    <!-- EMAIL (DB: email NULL) -->
+    <input
+      id="email"
+      class="input"
+      type="email"
+      placeholder="Email (optional)"
+    />
+
+    <!-- APPOINTMENT DATE (DB: appointment_date NOT NULL) -->
+    <input
+      id="appointmentDate"
+      class="input"
+      type="date"
+      required
+    />
+
+    <!-- DEPARTMENT (DB: department NOT NULL) -->
+    <select id="department" class="input" required>
+      <option value="" disabled selected>Select Department</option>
+      <option value="General">General</option>
+      <option value="Cardiology">Cardiology</option>
+      <option value="Orthopedics">Orthopedics</option>
+    </select>
+
+    <!-- DOCTOR (DB: doctor NOT NULL) -->
+    <select id="doctor" class="input" required>
+      <option value="" disabled selected>Select Doctor</option>
+      <option value="Dr. Kumar">Dr. Kumar</option>
+      <option value="Dr. Ramesh">Dr. Ramesh</option>
+    </select>
+
+    <!-- SYMPTOMS (DB: symptoms TEXT) -->
+    <textarea
+      id="symptoms"
+      class="input md:col-span-2"
+      placeholder="Symptoms / Problem description"
+    ></textarea>
+
+    <!-- SUBMIT -->
+<button
+  id="submitBtn"
+  class="md:col-span-2 bg-teal-600 text-white py-3 rounded text-lg">
+  Register Appointment
+</button>
+
+
+  </form>
+</div>
+
+
+
+<script src="app.js"></script>
+</body>
+</html>

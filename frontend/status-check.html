@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Check Appointment Status | Hope Hospital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- HEADER -->
+<header class="bg-white shadow sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto p-4 flex justify-between items-center">
+    <h1 class="flex items-center gap-2 text-2xl font-bold text-teal-600">
+      <img src="heart.jpg" class="w-7 h-7" />
+      Hope Hospital
+    </h1>
+
+    <nav class="space-x-6 font-medium">
+      <a href="index.html" class="hover:text-teal-600">Home</a>
+      <a href="appointment.html" class="hover:text-teal-600">Appointment</a>
+      <a href="status-check.html" class="text-teal-600 font-semibold">Status</a>
+      <a href="admin.html" class="hover:text-teal-600">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<!-- STATUS CHECK FORM -->
+<section class="py-12">
+  <div class="max-w-xl mx-auto bg-white p-8 rounded-xl shadow">
+    <h2 class="text-2xl font-bold text-teal-600 mb-6 text-center">
+      🔍 Check Appointment Status
+    </h2>
+
+    <input
+      id="statusPhone"
+      placeholder="Enter Phone Number"
+      class="border p-2 rounded w-full mb-3"
+    />
+
+    <p class="text-center text-gray-400 mb-2">OR</p>
+
+    <input
+      id="statusEmail"
+      placeholder="Enter Email Address"
+      class="border p-2 rounded w-full mb-4"
+    />
+
+    <button
+      onclick="checkStatus()"
+      class="bg-teal-600 text-white w-full py-2 rounded hover:bg-teal-700">
+      Check Status
+    </button>
+  </div>
+</section>
+
+<!-- STATUS RESULT -->
+<section id="statusPage" class="hidden pb-16">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="bg-white shadow-xl rounded-2xl p-8">
+
+      <h2 class="text-2xl font-bold text-teal-600 mb-6 text-center">
+        🏥 Appointment Status
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-6 text-lg">
+        <p><b>Patient Name:</b> <span id="pName"></span></p>
+        <p><b>Date:</b> <span id="pDate"></span></p>
+        <p><b>Doctor:</b> <span id="pDoctor"></span></p>
+        <p><b>Department:</b> <span id="pDept"></span></p>
+        
+        <p><b>Contact:</b> <span id="pContact"></span></p>
+        <p><b>Email:</b> <span id="pEmail"></span></p>
+        <p><b>Notes:</b> <span id="pNotes"></span></p>
+      </div>
+
+      <div class="mt-8 text-center">
+        <span
+          id="pStatus"
+          class="inline-block px-8 py-3 rounded-full text-white text-xl font-bold">
+        </span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gray-100 text-center py-6 text-sm">
+  📍 Hope Hospital, Vuyyuru | ☎ 24/7 Emergency Care
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
